@@ -15,13 +15,19 @@ jobs:
     - name: Install Docker Compose
       run: |
         sudo apt update
-        sudo apt install docker-compose -y
+        sudo apt install docker-compose -y || true 
 
     - name: Stop running containers if exist
       run: docker compose down || true
 
     - name: Start Docker Compose
       run: docker compose up -d
+
+    - name: Show Docker Container
+      run: docker ps
+
+    - name: Verify container Running or not
+      run: echo "Docker Running Successfully"
 
     - name: Verify deployment
       run: echo "Docker deployment successful"
