@@ -37,4 +37,3 @@ jobs:
 
     - name: Verify deployment
       run: echo "Docker deployment successful"
-    
