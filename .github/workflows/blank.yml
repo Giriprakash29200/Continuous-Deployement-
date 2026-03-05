@@ -12,6 +12,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Show current directory
+      run: pwd
+
+    - name: Show repository structure
+      run: ls -R
+
     - name: Install Docker Compose
       run: |
         sudo apt update
