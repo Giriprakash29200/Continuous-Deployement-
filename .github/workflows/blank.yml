@@ -31,6 +31,9 @@ jobs:
 
     - name: Show Docker Container
       run: docker ps
+    
+    - name: Show website output
+      run: curl http://localhost
 
     - name: Verify container Running or not
       run: echo "Docker Running Successfully"
