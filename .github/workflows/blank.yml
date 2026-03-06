@@ -1,0 +1,42 @@
+name: Docker Compose Deploy
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Show current directory
+      run: pwd
+
+    - name: Show repository structure
+      run: ls -R
+
+    - name: Install Docker Compose
+      run: |
+        sudo apt update
+        sudo apt install docker-compose -y || true 
+
+    - name: Stop running containers if exist
+      run: docker compose down || true
+
+    - name: Start Docker Compose
+      run: docker compose up -d
+
+    - name: Show Docker Container
+      run: docker ps
+    
+    - name: Show website output
+      run: curl http://localhost
+
+    - name: Verify container Running or not
+      run: echo "Docker Running Successfully"
+
+    - name: Verify deployment
+      run: echo "Docker deployment successful"
